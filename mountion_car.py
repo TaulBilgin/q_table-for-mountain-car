@@ -52,8 +52,9 @@ for i in range(10000):
        # Update Q-value using Bellman equation
         q_table[now_state, now_velocity, action] = (1 - learning_rate) * q_table[now_state, now_velocity, action] + learning_rate * (reward + gamma * np.max(q_table[next_state, next_velocity]))
         now = next[0]
-
-    if i % 100 == 0:
+        
+    # chance choice_list every 100 steps 
+    if (i+1) % 100 == 0:
         choice_list.remove("x")
         choice_list.append("y")
         
